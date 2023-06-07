@@ -8,8 +8,11 @@ import Description from './components/Description'
 import Images from './components/Images'
 import Reviews from './components/Reviews'
 import ReservationCard from './components/ReservationCard'
+import { PrismaClient } from '@prisma/client'
 
 const RestaurantDetail = () => {
+
+    const prisma = new PrismaClient()
   return (
         <>
             <div className="bg-white w-[70%] rounded p-3 shadow">
