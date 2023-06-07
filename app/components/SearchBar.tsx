@@ -3,9 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBar(props: any) {
   const router = useRouter();
   const [location, setLocation] = useState("");
+
+  console.log(props, "propssss")
   return (
     <div className="text-left text-lg py-3 m-auto flex justify-center">
       <input
