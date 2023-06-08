@@ -1,8 +1,7 @@
 import { Inter } from '@next/font/google'
-import Navbar from './components/Navbar'
 import Header from './components/Header'
 import RestaurantCard from './components/RestaurantCard'
-import { PrismaClient, Cuisine, Location, PRICE } from '@prisma/client'
+import { PrismaClient, Cuisine, Location, PRICE, Review } from '@prisma/client'
 
 const prisma = new PrismaClient()
 const inter = Inter({ subsets: ['latin'] })
@@ -14,7 +13,8 @@ export interface RestaurantCardType{
 	cuisine: 	Cuisine,
 	location: 	Location,
 	price:		PRICE,
-	slug:		string
+	slug:		string,
+	reviews:	Review[]
 }
 
 const fetchRestaurants = async (): Promise< RestaurantCardType[] > => {
@@ -26,7 +26,8 @@ const fetchRestaurants = async (): Promise< RestaurantCardType[] > => {
 			slug: 		true,
 			cuisine: 	true,
 			location: 	true,
-			price:		true
+			price:		true,
+			reviews:	true
 		}
 	})
 	return restaurants
