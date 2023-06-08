@@ -1,7 +1,4 @@
-import Link from 'next/link'
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import Header from './components/Header'
 import RestaurantNavbar from './components/RestaurantNavbar'
 import Rating from './components/Rating'
 import Description from './components/Description'
@@ -9,6 +6,7 @@ import Images from './components/Images'
 import Reviews from './components/Reviews'
 import ReservationCard from './components/ReservationCard'
 import { PrismaClient, Review } from '@prisma/client'
+import { notFound } from 'next/navigation'
 
 interface Restaurant{
     id: number;
@@ -37,7 +35,8 @@ const fetchRestaurantsBySlug = async (slug: string): Promise<Restaurant> => {
     })
 
     if(!restaurant){
-        throw new Error()
+        // throw new Error('Can not find a restaurant')
+        notFound()
     }
     return restaurant
 }

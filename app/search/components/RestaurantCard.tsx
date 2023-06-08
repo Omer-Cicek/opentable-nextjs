@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import Price from '../../components/Price';
 import { calculateReviewRatingAverage } from '../../../utils/calculateReviewRatingAverage';
+import Stars from '../../components/Stars';
 
 interface Restaurant{
     id: number;
@@ -36,7 +37,7 @@ const RestaurantCard = ({restaurant}: { restaurant: Restaurant}) => {
                 <div className="pl-5">
                     <h2 className="text-3xl">{restaurant.name}</h2>
                     <div className="flex items-start">
-                        <div className="flex mb-2">*****</div>
+                        <Stars reviews={restaurant.reviews}/>
                         <p className="ml-2 text-sm">{renderRatingText()}</p>
                     </div>
                     <div className="mb-9">
